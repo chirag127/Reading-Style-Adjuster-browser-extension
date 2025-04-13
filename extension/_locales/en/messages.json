@@ -1,0 +1,258 @@
+{
+  "extensionName": {
+    "message": "Reading Style Adjuster",
+    "description": "Name of the extension"
+  },
+  "extensionDescription": {
+    "message": "Personalize and standardize the appearance of text content across websites for improved readability and accessibility.",
+    "description": "Description of the extension"
+  },
+  "popupEnableToggle": {
+    "message": "Enable",
+    "description": "Label for the enable/disable toggle in the popup"
+  },
+  "popupProfileLabel": {
+    "message": "Profile:",
+    "description": "Label for the profile selector in the popup"
+  },
+  "popupSaveProfileButton": {
+    "message": "Save",
+    "description": "Text for the save profile button in the popup"
+  },
+  "popupNewProfileButton": {
+    "message": "New",
+    "description": "Text for the new profile button in the popup"
+  },
+  "popupDeleteProfileButton": {
+    "message": "Delete",
+    "description": "Text for the delete profile button in the popup"
+  },
+  "popupFontSizeLabel": {
+    "message": "Font Size:",
+    "description": "Label for the font size control in the popup"
+  },
+  "popupFontFamilyLabel": {
+    "message": "Font Family:",
+    "description": "Label for the font family control in the popup"
+  },
+  "popupLineHeightLabel": {
+    "message": "Line Height:",
+    "description": "Label for the line height control in the popup"
+  },
+  "popupWordSpacingLabel": {
+    "message": "Word Spacing:",
+    "description": "Label for the word spacing control in the popup"
+  },
+  "popupTextAlignmentLabel": {
+    "message": "Text Alignment:",
+    "description": "Label for the text alignment control in the popup"
+  },
+  "popupPreviewHeading": {
+    "message": "Preview",
+    "description": "Heading for the preview section in the popup"
+  },
+  "popupPreviewText": {
+    "message": "The quick brown fox jumps over the lazy dog. This is a preview of how your text will appear with the current settings.",
+    "description": "Sample text for the preview in the popup"
+  },
+  "popupCurrentSiteLabel": {
+    "message": "Current site: ",
+    "description": "Label for the current site information in the popup"
+  },
+  "popupDisableSiteButton": {
+    "message": "Disable for this site",
+    "description": "Text for the disable for this site button in the popup"
+  },
+  "popupEnableSiteButton": {
+    "message": "Enable for this site",
+    "description": "Text for the enable for this site button in the popup"
+  },
+  "popupSiteProfileButton": {
+    "message": "Set site-specific profile",
+    "description": "Text for the set site-specific profile button in the popup"
+  },
+  "popupOptionsButton": {
+    "message": "Advanced Options",
+    "description": "Text for the advanced options button in the popup"
+  },
+  "popupResetButton": {
+    "message": "Reset",
+    "description": "Text for the reset button in the popup"
+  },
+  "popupNewProfileDialogTitle": {
+    "message": "Create New Profile",
+    "description": "Title for the new profile dialog in the popup"
+  },
+  "popupNewProfileNameLabel": {
+    "message": "Profile Name:",
+    "description": "Label for the profile name input in the new profile dialog"
+  },
+  "popupNewProfileCancelButton": {
+    "message": "Cancel",
+    "description": "Text for the cancel button in the new profile dialog"
+  },
+  "popupNewProfileSaveButton": {
+    "message": "Save",
+    "description": "Text for the save button in the new profile dialog"
+  },
+  "popupSiteProfileDialogTitle": {
+    "message": "Site-Specific Profile",
+    "description": "Title for the site-specific profile dialog in the popup"
+  },
+  "popupSiteProfileSelectLabel": {
+    "message": "Select Profile:",
+    "description": "Label for the profile selector in the site-specific profile dialog"
+  },
+  "popupSiteProfileRemoveButton": {
+    "message": "Remove",
+    "description": "Text for the remove button in the site-specific profile dialog"
+  },
+  "popupSiteProfileCancelButton": {
+    "message": "Cancel",
+    "description": "Text for the cancel button in the site-specific profile dialog"
+  },
+  "popupSiteProfileSaveButton": {
+    "message": "Save",
+    "description": "Text for the save button in the site-specific profile dialog"
+  },
+  "optionsTitle": {
+    "message": "Reading Style Adjuster - Advanced Options",
+    "description": "Title for the options page"
+  },
+  "optionsTabProfiles": {
+    "message": "Profiles",
+    "description": "Text for the profiles tab in the options page"
+  },
+  "optionsTabSiteExceptions": {
+    "message": "Site Exceptions",
+    "description": "Text for the site exceptions tab in the options page"
+  },
+  "optionsTabSiteProfiles": {
+    "message": "Site-Specific Profiles",
+    "description": "Text for the site-specific profiles tab in the options page"
+  },
+  "optionsTabImportExport": {
+    "message": "Import/Export",
+    "description": "Text for the import/export tab in the options page"
+  },
+  "optionsProfilesHeading": {
+    "message": "Manage Profiles",
+    "description": "Heading for the profiles section in the options page"
+  },
+  "optionsNewProfileButton": {
+    "message": "New Profile",
+    "description": "Text for the new profile button in the options page"
+  },
+  "optionsSiteExceptionsHeading": {
+    "message": "Site Exceptions",
+    "description": "Heading for the site exceptions section in the options page"
+  },
+  "optionsAddExceptionPlaceholder": {
+    "message": "Enter domain (e.g., example.com)",
+    "description": "Placeholder for the add exception input in the options page"
+  },
+  "optionsAddExceptionButton": {
+    "message": "Add",
+    "description": "Text for the add exception button in the options page"
+  },
+  "optionsSiteExceptionsInfo": {
+    "message": "The extension will not apply any styles to these sites.",
+    "description": "Information text for the site exceptions section in the options page"
+  },
+  "optionsSiteProfilesHeading": {
+    "message": "Site-Specific Profiles",
+    "description": "Heading for the site-specific profiles section in the options page"
+  },
+  "optionsAddSiteDomainPlaceholder": {
+    "message": "Enter domain (e.g., example.com)",
+    "description": "Placeholder for the add site domain input in the options page"
+  },
+  "optionsAddSiteProfileButton": {
+    "message": "Add",
+    "description": "Text for the add site profile button in the options page"
+  },
+  "optionsSiteProfilesInfo": {
+    "message": "These sites will use specific profiles instead of the global profile.",
+    "description": "Information text for the site-specific profiles section in the options page"
+  },
+  "optionsExportHeading": {
+    "message": "Export Settings",
+    "description": "Heading for the export settings section in the options page"
+  },
+  "optionsExportInfo": {
+    "message": "Export all your settings, profiles, and site configurations to a file.",
+    "description": "Information text for the export settings section in the options page"
+  },
+  "optionsExportButton": {
+    "message": "Export Settings",
+    "description": "Text for the export settings button in the options page"
+  },
+  "optionsImportHeading": {
+    "message": "Import Settings",
+    "description": "Heading for the import settings section in the options page"
+  },
+  "optionsImportInfo": {
+    "message": "Import settings from a previously exported file.",
+    "description": "Information text for the import settings section in the options page"
+  },
+  "optionsImportButton": {
+    "message": "Import Settings",
+    "description": "Text for the import settings button in the options page"
+  },
+  "optionsResetHeading": {
+    "message": "Reset All Settings",
+    "description": "Heading for the reset all settings section in the options page"
+  },
+  "optionsResetInfo": {
+    "message": "Reset all settings to their default values. This cannot be undone.",
+    "description": "Information text for the reset all settings section in the options page"
+  },
+  "optionsResetButton": {
+    "message": "Reset All Settings",
+    "description": "Text for the reset all settings button in the options page"
+  },
+  "optionsEditProfileTitle": {
+    "message": "Edit Profile",
+    "description": "Title for the edit profile dialog in the options page"
+  },
+  "optionsEditProfileNameLabel": {
+    "message": "Profile Name:",
+    "description": "Label for the profile name input in the edit profile dialog"
+  },
+  "optionsEditProfileFontSizeLabel": {
+    "message": "Font Size (px):",
+    "description": "Label for the font size control in the edit profile dialog"
+  },
+  "optionsEditProfileFontFamilyLabel": {
+    "message": "Font Family:",
+    "description": "Label for the font family control in the edit profile dialog"
+  },
+  "optionsEditProfileLineHeightLabel": {
+    "message": "Line Height:",
+    "description": "Label for the line height control in the edit profile dialog"
+  },
+  "optionsEditProfileWordSpacingLabel": {
+    "message": "Word Spacing (em):",
+    "description": "Label for the word spacing control in the edit profile dialog"
+  },
+  "optionsEditProfileTextAlignmentLabel": {
+    "message": "Text Alignment:",
+    "description": "Label for the text alignment control in the edit profile dialog"
+  },
+  "optionsEditProfilePreviewHeading": {
+    "message": "Preview",
+    "description": "Heading for the preview section in the edit profile dialog"
+  },
+  "optionsEditProfilePreviewText": {
+    "message": "The quick brown fox jumps over the lazy dog. This is a preview of how your text will appear with the current settings.",
+    "description": "Sample text for the preview in the edit profile dialog"
+  },
+  "optionsEditProfileCancelButton": {
+    "message": "Cancel",
+    "description": "Text for the cancel button in the edit profile dialog"
+  },
+  "optionsEditProfileSaveButton": {
+    "message": "Save",
+    "description": "Text for the save button in the edit profile dialog"
+  }
+}

@@ -1,0 +1,23 @@
+/**
+ * Base CSS for the Reading Style Adjuster extension
+ * This file contains minimal CSS that will be injected into all pages
+ * Most styling will be done dynamically via the style-injector.js
+ */
+
+/* 
+ * This class will be added to the body when the extension is active
+ * It can be used for debugging or to add additional base styles
+ */
+body.reading-style-adjuster-active {
+  /* Base styles when extension is active */
+}
+
+/* 
+ * Hide any custom font loaders that might interfere with our font settings
+ * This is a defensive measure and might need to be adjusted based on user feedback
+ */
+.reading-style-adjuster-active .font-loader,
+.reading-style-adjuster-active [class*="font-loader"],
+.reading-style-adjuster-active [id*="font-loader"] {
+  display: none !important;
+}

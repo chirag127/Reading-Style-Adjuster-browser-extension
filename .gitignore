@@ -128,3 +128,12 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Generated icon files
+extension/icons/icon16.png
+extension/icons/icon48.png
+extension/icons/icon128.png
+
+# OS files
+.DS_Store
+Thumbs.db

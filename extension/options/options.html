@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading Style Adjuster - Options</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Reading Style Adjuster - Advanced Options</h1>
+    </header>
+    
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="profiles">Profiles</button>
+      <button class="tab-btn" data-tab="site-exceptions">Site Exceptions</button>
+      <button class="tab-btn" data-tab="site-profiles">Site-Specific Profiles</button>
+      <button class="tab-btn" data-tab="import-export">Import/Export</button>
+    </div>
+    
+    <div class="tab-content">
+      <!-- Profiles Tab -->
+      <div id="profiles-tab" class="tab-pane active">
+        <div class="section-header">
+          <h2>Manage Profiles</h2>
+          <button id="new-profile-btn" class="primary-btn">New Profile</button>
+        </div>
+        
+        <div class="profiles-list" id="profiles-list">
+          <!-- Profiles will be populated here -->
+        </div>
+      </div>
+      
+      <!-- Site Exceptions Tab -->
+      <div id="site-exceptions-tab" class="tab-pane">
+        <div class="section-header">
+          <h2>Site Exceptions</h2>
+          <div class="add-exception">
+            <input type="text" id="new-exception-input" placeholder="Enter domain (e.g., example.com)">
+            <button id="add-exception-btn" class="primary-btn">Add</button>
+          </div>
+        </div>
+        
+        <p class="info-text">The extension will not apply any styles to these sites.</p>
+        
+        <div class="exceptions-list" id="exceptions-list">
+          <!-- Exceptions will be populated here -->
+        </div>
+      </div>
+      
+      <!-- Site-Specific Profiles Tab -->
+      <div id="site-profiles-tab" class="tab-pane">
+        <div class="section-header">
+          <h2>Site-Specific Profiles</h2>
+          <div class="add-site-profile">
+            <input type="text" id="new-site-domain-input" placeholder="Enter domain (e.g., example.com)">
+            <select id="new-site-profile-select">
+              <!-- Profiles will be populated here -->
+            </select>
+            <button id="add-site-profile-btn" class="primary-btn">Add</button>
+          </div>
+        </div>
+        
+        <p class="info-text">These sites will use specific profiles instead of the global profile.</p>
+        
+        <div class="site-profiles-list" id="site-profiles-list">
+          <!-- Site profiles will be populated here -->
+        </div>
+      </div>
+      
+      <!-- Import/Export Tab -->
+      <div id="import-export-tab" class="tab-pane">
+        <div class="section">
+          <h2>Export Settings</h2>
+          <p>Export all your settings, profiles, and site configurations to a file.</p>
+          <button id="export-btn" class="primary-btn">Export Settings</button>
+        </div>
+        
+        <div class="section">
+          <h2>Import Settings</h2>
+          <p>Import settings from a previously exported file.</p>
+          <div class="import-controls">
+            <input type="file" id="import-file-input" accept=".json">
+            <button id="import-btn" class="primary-btn">Import Settings</button>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2>Reset All Settings</h2>
+          <p>Reset all settings to their default values. This cannot be undone.</p>
+          <button id="reset-all-btn" class="danger-btn">Reset All Settings</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Dialogs -->
+  <div id="edit-profile-dialog" class="dialog">
+    <div class="dialog-content">
+      <h2 id="edit-profile-title">Edit Profile</h2>
+      <div class="dialog-body">
+        <div class="form-group">
+          <label for="edit-profile-name">Profile Name:</label>
+          <input type="text" id="edit-profile-name">
+        </div>
+        
+        <div class="form-group">
+          <label for="edit-profile-font-size">Font Size (px):</label>
+          <div class="range-control">
+            <input type="range" id="edit-profile-font-size" min="12" max="36" step="1">
+            <span id="edit-profile-font-size-value">18px</span>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="edit-profile-font-family">Font Family:</label>
+          <select id="edit-profile-font-family"></select>
+        </div>
+        
+        <div class="form-group">
+          <label for="edit-profile-line-height">Line Height:</label>
+          <div class="range-control">
+            <input type="range" id="edit-profile-line-height" min="1" max="3" step="0.1">
+            <span id="edit-profile-line-height-value">1.5</span>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="edit-profile-word-spacing">Word Spacing (em):</label>
+          <div class="range-control">
+            <input type="range" id="edit-profile-word-spacing" min="0" max="1" step="0.05">
+            <span id="edit-profile-word-spacing-value">0.1em</span>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="edit-profile-text-alignment">Text Alignment:</label>
+          <select id="edit-profile-text-alignment">
+            <option value="left">Left</option>
+            <option value="right">Right</option>
+            <option value="center">Center</option>
+            <option value="justify">Justify</option>
+          </select>
+        </div>
+        
+        <div class="preview-box">
+          <h3>Preview</h3>
+          <div id="edit-profile-preview">
+            The quick brown fox jumps over the lazy dog. This is a preview of how your text will appear with the current settings.
+          </div>
+        </div>
+      </div>
+      <div class="dialog-actions">
+        <button id="edit-profile-cancel" class="secondary-btn">Cancel</button>
+        <button id="edit-profile-save" class="primary-btn">Save</button>
+      </div>
+    </div>
+  </div>
+  
+  <script type="module" src="options.js"></script>
+</body>
+</html>

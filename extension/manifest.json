@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "Reading Style Adjuster",
+  "version": "1.0.0",
+  "description": "Personalize and standardize the appearance of text content across websites for improved readability and accessibility.",
+  "author": "Chirag Singhal",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "content_scripts/dom-analyzer.js",
+        "content_scripts/style-injector.js"
+      ],
+      "css": ["content_scripts/content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": [
+    "storage",
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "default_locale": "en"
+}

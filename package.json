@@ -1,0 +1,22 @@
+{
+  "name": "reading-style-adjuster",
+  "version": "1.0.0",
+  "description": "A browser extension that empowers users to personalize and standardize the appearance of text content across websites.",
+  "main": "index.js",
+  "scripts": {
+    "generate-icons": "node convert-icons.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "browser-extension",
+    "accessibility",
+    "readability",
+    "typography",
+    "text-styling"
+  ],
+  "author": "Chirag Singhal",
+  "license": "MIT",
+  "dependencies": {
+    "canvas": "^2.11.0"
+  }
+}
