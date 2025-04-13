@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Style Adjuster - Browser Extension</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Dark theme colors */
+            --bg-primary: #121212;
+            --bg-secondary: #1e1e1e;
+            --bg-tertiary: #2d2d2d;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+            --accent-primary: #3498db;
+            --accent-secondary: #2980b9;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            
+            /* Spacing */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-xxl: 3rem;
+            
+            /* Border radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+        
+        a:hover {
+            color: var(--accent-secondary);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+        }
+        
+        /* Header styles */
+        header {
+            background-color: var(--bg-secondary);
+            padding: var(--spacing-xl) 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: var(--spacing-md);
+            background-color: var(--accent-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .header-tagline {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .header-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            gap: var(--spacing-sm);
+        }
+        
+        .btn-primary {
+            background-color: var(--accent-primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--accent-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            background-color: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--bg-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Section styles */
+        section {
+            padding: var(--spacing-xxl) 0;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xl);
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-primary);
+            margin: var(--spacing-sm) auto 0;
+            border-radius: var(--radius-sm);
+        }
+        
+        /* About section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        
+        /* Features section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+        
+        .feature-card {
+            background-color: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            transition: transform var(--transition-normal);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent-primary);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .feature-description {
+            color: var(--text-secondary);
+        }
+        
+        /* Installation section */
+        .installation-steps {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step {
+            display: flex;
+            margin-bottom: var(--spacing-lg);
+            align-items: flex-start;
+        }
+        
+        .step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .step-number {
+            background-color: var(--accent-primary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: var(--spacing-md);
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-title {
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .step-description {
+            color: var(--text-secondary);
+        }
+        
+        .browser-steps {
+            margin-top: var(--spacing-md);
+            padding-left: var(--spacing-xl);
+        }
+        
+        .browser-step {
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .browser-name {
+            font-weight: 600;
+            color: var(--accent-primary);
+        }
+        
+        /* How to use section */
+        .usage-steps {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Tech stack section */
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+        
+        .tech-item {
+            background-color: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md) var(--spacing-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all var(--transition-fast);
+        }
+        
+        .tech-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .tech-icon {
+            color: var(--accent-primary);
+            font-size: 1.2rem;
+        }
+        
+        /* Footer styles */
+        footer {
+            background-color: var(--bg-secondary);
+            padding: var(--spacing-xl) 0;
+            margin-top: var(--spacing-xxl);
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .footer-link {
+            color: var(--text-secondary);
+            transition: color var(--transition-fast);
+        }
+        
+        .footer-link:hover {
+            color: var(--text-primary);
+        }
+        
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 2rem;
+            }
+            
+            .header-tagline {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo animate">
+                    <i class="fas fa-book-reader"></i>
+                </div>
+                <h1 class="header-title animate delay-1">Reading Style Adjuster</h1>
+                <p class="header-tagline animate delay-1">Personalize and standardize the appearance of text content across websites for improved readability and accessibility.</p>
+                <div class="header-buttons animate delay-2">
+                    <a href="https://github.com/chirag127/Reading-Style-Adjuster-browser-extension" class="btn btn-primary" target="_blank">
+                        <i class="fab fa-github"></i> GitHub Repository
+                    </a>
+                    <a href="privacy-policy.html" class="btn btn-secondary" target="_blank">
+                        <i class="fas fa-shield-alt"></i> Privacy Policy
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title animate">About</h2>
+                <div class="about-content animate delay-1">
+                    <p>Reading Style Adjuster is a browser extension that empowers users to personalize and standardize the appearance of text content across websites. It provides granular control over key typographic properties like font size, font family, line height, word spacing, and text justification, applying these preferences globally or with specific overrides.</p>
+                    <p>Whether you have visual impairments, reading disabilities, or simply prefer a consistent reading experience across the web, Reading Style Adjuster helps create your optimal reading environment.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="features">
+            <div class="container">
+                <h2 class="section-title animate">Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card animate delay-1">
+                        <div class="feature-icon">
+                            <i class="fas fa-text-height"></i>
+                        </div>
+                        <h3 class="feature-title">Core Style Adjustments</h3>
+                        <p class="feature-description">Control font size, font family, line height, word spacing, and text alignment across all websites.</p>
+                    </div>
+                    
+                    <div class="feature-card animate delay-1">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="feature-title">Profiles & Presets</h3>
+                        <p class="feature-description">Create and switch between multiple profiles for different reading scenarios (e.g., "Day Reading," "Night Mode," "Dyslexia Assist").</p>
+                    </div>
+                    
+                    <div class="feature-card animate delay-2">
+                        <div class="feature-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3 class="feature-title">Site-Specific Settings</h3>
+                        <p class="feature-description">Disable the extension for specific domains or assign different profiles to particular websites.</p>
+                    </div>
+                    
+                    <div class="feature-card animate delay-2">
+                        <div class="feature-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Real-time Application</h3>
+                        <p class="feature-description">See changes instantly as you adjust settings, with no page reload required.</p>
+                    </div>
+                    
+                    <div class="feature-card animate delay-3">
+                        <div class="feature-icon">
+                            <i class="fas fa-font"></i>
+                        </div>
+                        <h3 class="feature-title">Dyslexia-Friendly Fonts</h3>
+                        <p class="feature-description">Access specialized fonts designed to improve readability for users with dyslexia.</p>
+                    </div>
+                    
+                    <div class="feature-card animate delay-3">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-export"></i>
+                        </div>
+                        <h3 class="feature-title">Import/Export Settings</h3>
+                        <p class="feature-description">Backup your settings or share them across devices by exporting and importing configuration files.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="installation">
+            <div class="container">
+                <h2 class="section-title animate">Installation Instructions</h2>
+                <div class="installation-steps animate delay-1">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Clone the Repository</h3>
+                            <p class="step-description">
+                                <code>git clone https://github.com/chirag127/Reading-Style-Adjuster-browser-extension.git</code><br>
+                                <code>cd Reading-Style-Adjuster-browser-extension</code>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Install Dependencies</h3>
+                            <p class="step-description">
+                                <code>npm install</code>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Generate Icons</h3>
+                            <p class="step-description">
+                                <code>node convert-icons.js</code>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Load the Extension in Your Browser</h3>
+                            <div class="browser-steps">
+                                <div class="browser-step">
+                                    <span class="browser-name">Chrome:</span> Go to <code>chrome://extensions/</code>, enable Developer mode, click "Load unpacked", and select the <code>extension</code> folder.
+                                </div>
+                                <div class="browser-step">
+                                    <span class="browser-name">Firefox:</span> Go to <code>about:debugging#/runtime/this-firefox</code>, click "Load Temporary Add-on", and select any file in the <code>extension</code> folder.
+                                </div>
+                                <div class="browser-step">
+                                    <span class="browser-name">Edge:</span> Go to <code>edge://extensions/</code>, enable Developer mode, click "Load unpacked", and select the <code>extension</code> folder.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="usage">
+            <div class="container">
+                <h2 class="section-title animate">How to Use</h2>
+                <div class="usage-steps animate delay-1">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Access the Extension</h3>
+                            <p class="step-description">Click the Reading Style Adjuster icon in your browser's toolbar to open the popup interface.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Adjust Text Appearance</h3>
+                            <p class="step-description">Use the sliders and dropdowns to customize font size, font family, line height, word spacing, and text alignment.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Create and Switch Profiles</h3>
+                            <p class="step-description">Save your current settings as a profile and easily switch between different profiles as needed.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Configure Site-Specific Settings</h3>
+                            <p class="step-description">Disable the extension for specific websites or assign different profiles to particular domains.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Access Advanced Options</h3>
+                            <p class="step-description">Click "Advanced Options" to manage profiles, site exceptions, and import/export settings.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="tech">
+            <div class="container">
+                <h2 class="section-title animate">Technology Stack</h2>
+                <div class="tech-list animate delay-1">
+                    <div class="tech-item">
+                        <span class="tech-icon"><i class="fab fa-chrome"></i></span>
+                        Manifest V3
+                    </div>
+                    <div class="tech-item">
+                        <span class="tech-icon"><i class="fab fa-js"></i></span>
+                        JavaScript (ES6+)
+                    </div>
+                    <div class="tech-item">
+                        <span class="tech-icon"><i class="fab fa-html5"></i></span>
+                        HTML5
+                    </div>
+                    <div class="tech-item">
+                        <span class="tech-icon"><i class="fab fa-css3-alt"></i></span>
+                        CSS3
+                    </div>
+                    <div class="tech-item">
+                        <span class="tech-icon"><i class="fas fa-database"></i></span>
+                        Chrome Storage API
+                    </div>
+                    <div class="tech-item">
+                        <span class="tech-icon"><i class="fas fa-code"></i></span>
+                        MutationObserver
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="https://github.com/chirag127/Reading-Style-Adjuster-browser-extension" class="footer-link" target="_blank">GitHub Repository</a>
+                    <a href="privacy-policy.html" class="footer-link" target="_blank">Privacy Policy</a>
+                    <a href="https://github.com/chirag127/Reading-Style-Adjuster-browser-extension/issues" class="footer-link" target="_blank">Report an Issue</a>
+                </div>
+                <p class="copyright">&copy; 2023 Chirag Singhal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Intersection Observer for animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animate');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>

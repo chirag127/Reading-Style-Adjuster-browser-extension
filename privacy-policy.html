@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Reading Style Adjuster</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Dark theme colors */
+            --bg-primary: #121212;
+            --bg-secondary: #1e1e1e;
+            --bg-tertiary: #2d2d2d;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+            --accent-primary: #3498db;
+            --accent-secondary: #2980b9;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            
+            /* Spacing */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-xxl: 3rem;
+            
+            /* Border radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+        
+        a:hover {
+            color: var(--accent-secondary);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+        }
+        
+        /* Header styles */
+        header {
+            background-color: var(--bg-secondary);
+            padding: var(--spacing-xl) 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .header-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .header-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            gap: var(--spacing-sm);
+            background-color: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+        
+        .back-button:hover {
+            background-color: var(--bg-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Policy content styles */
+        .policy-content {
+            background-color: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xxl);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .last-updated {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .section {
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            color: var(--accent-primary);
+        }
+        
+        .subsection {
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .subsection-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        ul {
+            list-style-type: none;
+            margin-left: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        ul li {
+            margin-bottom: var(--spacing-sm);
+            position: relative;
+        }
+        
+        ul li::before {
+            content: '•';
+            color: var(--accent-primary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .highlight {
+            background-color: rgba(52, 152, 219, 0.1);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-sm);
+            border-left: 4px solid var(--accent-primary);
+            margin: var(--spacing-md) 0;
+        }
+        
+        code {
+            font-family: monospace;
+            background-color: var(--bg-tertiary);
+            padding: 0.2em 0.4em;
+            border-radius: var(--radius-sm);
+            font-size: 0.9em;
+        }
+        
+        /* Footer styles */
+        footer {
+            background-color: var(--bg-secondary);
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 2rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+            }
+            
+            .subsection-title {
+                font-size: 1.1rem;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1 class="header-title animate">Privacy Policy</h1>
+                <p class="header-subtitle animate delay-1">Reading Style Adjuster Browser Extension</p>
+                <a href="index.html" class="back-button animate delay-2">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <div class="container">
+            <div class="policy-content animate">
+                <p class="last-updated">Last Updated: October 26, 2023</p>
+                
+                <div class="section">
+                    <h2 class="section-title">Introduction</h2>
+                    <p>Reading Style Adjuster is a browser extension that empowers users to personalize and standardize the appearance of text content across websites. This privacy policy explains how the extension handles user data.</p>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Required Permissions</h2>
+                    <p>The extension requests the following permissions:</p>
+                    
+                    <div class="subsection">
+                        <h3 class="subsection-title">storage</h3>
+                        <p>This permission is required to save your settings locally on your device. We use the browser's <code>chrome.storage.local</code> API to store:</p>
+                        <ul>
+                            <li>Your style preferences (font size, font family, line height, word spacing, text alignment)</li>
+                            <li>Saved profiles</li>
+                            <li>Site exceptions and site-specific profiles</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subsection">
+                        <h3 class="subsection-title">scripting</h3>
+                        <p>This permission is required to modify webpage styles via content scripts. It allows the extension to inject CSS and execute scripts that adjust the appearance of text on websites you visit.</p>
+                    </div>
+                    
+                    <div class="subsection">
+                        <h3 class="subsection-title">activeTab</h3>
+                        <p>This permission is required for applying styles to the current tab. It allows the extension to access and modify the content of the webpage you are currently viewing.</p>
+                    </div>
+                    
+                    <div class="subsection">
+                        <h3 class="subsection-title">host permissions (<code>&lt;all_urls&gt;</code>)</h3>
+                        <p>This permission is required to apply styles across websites. It allows the extension to run on any website you visit, so it can adjust text appearance according to your preferences.</p>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Information We Collect</h2>
+                    
+                    <div class="highlight">
+                        <strong>Nothing.</strong> Reading Style Adjuster does not collect, store, or transmit any user browsing history, personal data, or website content.
+                    </div>
+                    
+                    <div class="subsection">
+                        <h3 class="subsection-title">What We Do Not Collect</h3>
+                        <p>The extension does not collect, store, or transmit any:</p>
+                        <ul>
+                            <li>Browsing history</li>
+                            <li>Personal information</li>
+                            <li>Website content</li>
+                            <li>Usage statistics</li>
+                            <li>Crash reports</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subsection">
+                        <h3 class="subsection-title">Local Storage</h3>
+                        <p>The extension stores the following information <strong>locally on your device only</strong>:</p>
+                        <ul>
+                            <li>Your style preferences (font size, font family, line height, word spacing, text alignment)</li>
+                            <li>Saved profiles</li>
+                            <li>Site exceptions and site-specific profiles</li>
+                        </ul>
+                        <p>This data is stored using the browser's <code>chrome.storage.local</code> API and never leaves your device.</p>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">How We Use Your Information</h2>
+                    <p>Since we don't collect any information beyond what's stored locally on your device, there is no usage of your data beyond the functionality of the extension itself. Your settings are used solely to:</p>
+                    <ul>
+                        <li>Apply your preferred text styles to websites</li>
+                        <li>Remember your profiles and site-specific settings</li>
+                        <li>Provide a consistent experience across browsing sessions</li>
+                    </ul>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Data Storage & Security</h2>
+                    <p>All data is stored locally on your device using the browser's built-in storage API. This data:</p>
+                    <ul>
+                        <li>Never leaves your device</li>
+                        <li>Is not transmitted to any servers</li>
+                        <li>Is protected by the browser's own security mechanisms</li>
+                        <li>Is only accessible by the Reading Style Adjuster extension</li>
+                    </ul>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Third-Party Services</h2>
+                    <p>Reading Style Adjuster does not use any third-party services, analytics, or tracking tools. The extension operates entirely within your browser and does not communicate with external servers.</p>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">User Rights</h2>
+                    <p>Since we don't collect any personal data, there is no personal data to access, correct, or delete. Your settings remain entirely under your control on your local device.</p>
+                    <p>You can:</p>
+                    <ul>
+                        <li>View and modify your settings at any time through the extension interface</li>
+                        <li>Export your settings to a JSON file for backup or transfer to another device</li>
+                        <li>Reset all settings to defaults through the extension's options page</li>
+                        <li>Uninstall the extension at any time, which will remove all stored settings</li>
+                    </ul>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Changes to This Privacy Policy</h2>
+                    <p>We may update this privacy policy from time to time. We will notify you of any changes by posting the new privacy policy in the extension's repository and updating the "Last Updated" date.</p>
+                    <p>Significant changes will be communicated more prominently, such as through a notification in the extension itself or through the extension's update notes.</p>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">Contact Information</h2>
+                    <p>If you have any questions about this privacy policy, please:</p>
+                    <ul>
+                        <li>Open an issue in the <a href="https://github.com/chirag127/Reading-Style-Adjuster-browser-extension/issues" target="_blank">GitHub repository</a></li>
+                        <li>Contact the developer directly through GitHub</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2023 Chirag Singhal. All rights reserved.</p>
+                <p><a href="index.html">Back to Home</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Intersection Observer for animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animate');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
